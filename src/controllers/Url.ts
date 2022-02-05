@@ -1,5 +1,6 @@
 import { Request, response, Response } from 'express';
 import { nanoid } from 'nanoid';
+import 'dotenv/config';
 
 export class Url {
     public async shorten(req: Request, res: Response): Promise<void> {
