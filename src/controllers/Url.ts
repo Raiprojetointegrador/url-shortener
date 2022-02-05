@@ -9,6 +9,6 @@ export class Url {
         const shortUrl = `${process.env.API_URL}/${urlHash}`;
         // save url to database
         // return shortened url
-        response.json({ originUrl, urlHash, shortUrl });
+        res.json({ originUrl, urlHash, shortUrl });
     }
 }
