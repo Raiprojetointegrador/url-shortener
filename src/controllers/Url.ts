@@ -12,4 +12,14 @@ export class Url {
         // return shortened url
         res.json({ originUrl, urlHash, shortUrl });
     }
+
+    public async redirect(req: Request, res: Response): Promise<void> {
+        const { urlHash } = req.params;
+        const url = {
+            originUrl: "https://www.udemy.com/course/grpc-nodejs/",
+            urlHash: "O3sNocaZ",
+            shortUrl: "http://localhost:3000/O3sNocaZ"
+        }
+        res.redirect(url.originUrl);
+    }
 }
