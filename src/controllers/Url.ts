@@ -1,25 +1,25 @@
 import { Request, response, Response } from 'express';
 import { nanoid } from 'nanoid';
+import { UrlModel } from './../databases/model/Url';
 import 'dotenv/config';
 
 export class Url {
     public async shorten(req: Request, res: Response): Promise<void> {
         const { originUrl } = req.body;
-        // check if url exists
+        const url = await UrlModel.findOne({ originUrl });
+        if(url){
+            res.json(url);
+            return;
+        }
         const urlHash = nanoid(8);
         const shortUrl = `${process.env.API_URL}/${urlHash}`;
-        // save url to database
-        // return shortened url
+        UrlModel.create({ originUrl, urlHash, shortUrl });
         res.json({ originUrl, urlHash, shortUrl });
     }
 
     public async redirect(req: Request, res: Response): Promise<void> {
         const { urlHash } = req.params;
-        const url = {
-            originUrl: "https://www.udemy.com/course/grpc-nodejs/",
-            urlHash: "O3sNocaZ",
-            shortUrl: "http://localhost:3000/O3sNocaZ"
-        }
-        res.redirect(url.originUrl);
+        const url = await UrlModel.findOne({ urlHash };
+        url ? res.redirect(url.originUrl) : res.status(404).json({ error: 'Url not found' });
     }
 }
