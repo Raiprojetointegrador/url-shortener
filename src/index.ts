@@ -12,4 +12,5 @@ const url = new Url();
 api.post('/shorten', url.shorten);
 api.get('/:urlHash', url.redirect);
 
-api.listen(3000, () => console.log('listening on port 3000'));
+const PORT = process.env.PORT 
+api.listen(PORT, () => console.log(`listening on port ${PORT}`));
