@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import { UrlModel } from './../databases/model/Url';
 import 'dotenv/config';
 
-export class Url {
+export default class Url {
     public async shorten(req: Request, res: Response): Promise<void> {
         const { originUrl } = req.body;
         const url = await UrlModel.findOne({ originUrl });

@@ -1,16 +1,22 @@
 import { MongoConnection } from './databases/MongoConnection';
 import express from 'express';
-import { Url } from './controllers/Url';
+import routes from "./routes";
+import 'dotenv/config';
+
+
+if (process.env.NODE_ENV !== 'test') {
+    const database = new MongoConnection;
+    database.connect();
+}
 
 const api = express();
 api.use(express.json());
 
-const database = new MongoConnection;
-database.connect();
+api.use(routes);
 
-const url = new Url();
-api.post('/shorten', url.shorten);
-api.get('/:urlHash', url.redirect);
+if (process.env.NODE_ENV !== 'test') {
+    const PORT = process.env.PORT
+    api.listen(PORT, () => console.log(`listening on port ${PORT}`));
+}
 
-const PORT = process.env.PORT 
-api.listen(PORT, () => console.log(`listening on port ${PORT}`));
+export default api;
