@@ -42,7 +42,11 @@ stages:
         azureContainerRegistry: '{"loginServer":"testerai.azurecr.io", "id" : "/subscriptions/99d0fa6e-d94e-4d3a-a721-b0c4e260304c/resourceGroups/test-shortenerurl/providers/Microsoft.ContainerRegistry/registries/testerai"}'
         dockerComposeFile: '**/docker-compose.yml'
         action: 'Push services'
-   
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
 
     
 
