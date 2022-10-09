@@ -66,12 +66,7 @@ stages:
         dockerComposeFile: '**/docker-compose.yml'
         action: 'Run a Docker Compose command'
         dockerComposeCommand: 'start'
-    - task: DownloadBuildArtifacts@0
-      inputs:
-        buildType: 'current'
-        downloadType: 'single'
-        itemPattern: '**drop/**'
-        downloadPath: '$(System.ArtifactsDirectory)'
+   
 
     
 
