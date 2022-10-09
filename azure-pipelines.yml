@@ -1,12 +1,4 @@
 # Docker
-- task: DockerCompose@0
-  inputs:
-    containerregistrytype: 'Azure Container Registry'
-    azureSubscription: 'Azure subscription 1 (99d0fa6e-d94e-4d3a-a721-b0c4e260304c)'
-    azureContainerRegistry: '{"loginServer":"testerai.azurecr.io", "id" : "/subscriptions/99d0fa6e-d94e-4d3a-a721-b0c4e260304c/resourceGroups/test-shortenerurl/providers/Microsoft.ContainerRegistry/registries/testerai"}'
-    dockerComposeFile: '**/docker-compose.yml'
-    action: 'Run a Docker Compose command'
-    dockerComposeCommand: 'start'
 # Build and push an image to Azure Container Registry
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
