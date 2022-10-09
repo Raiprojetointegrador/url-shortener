@@ -15,7 +15,7 @@ api.use(express.json());
 api.use(routes);
 
 if (process.env.NODE_ENV !== 'test') {
-    const PORT = process.env.PORT
+    const PORT = process.env.PORT || 8080
     api.listen(PORT, () => console.log(`listening on port ${PORT}`));
 }
 
