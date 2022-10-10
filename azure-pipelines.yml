@@ -48,7 +48,7 @@ stages:
         docker images
       displayName: Display generated images
 
-    - publish: manifests
+    - upload: manifests
       artifact: manifests
 
     
