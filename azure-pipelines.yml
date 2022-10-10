@@ -49,8 +49,8 @@ stages:
         docker images
       displayName: Display generated images
 
-    - upload: drop
-      artifact: drop
+    - upload: 
+      artifact:
 
     
 
