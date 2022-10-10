@@ -15,6 +15,7 @@ variables:
   containerRegistry: 'testerai.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
+ 
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -48,8 +49,8 @@ stages:
         docker images
       displayName: Display generated images
 
-    - upload: manifests
-      artifact: manifests
+    - upload: drop
+      artifact: drop
 
     
 
